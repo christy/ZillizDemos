@@ -95,3 +95,4 @@ def mc_search_imdb(query, retriever, milvus_collection, search_params, top_k,
     formatted_results = list(zip(distances, movie_indexes, texts, labels))
 
     return formatted_results
+
