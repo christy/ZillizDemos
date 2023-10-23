@@ -45,7 +45,7 @@ def mc_search_imdb(query, retriever, milvus_collection, search_params, top_k,
     # Embed the query using same embedding model used to create the Milvus collection.
     query_embeddings = torch.tensor(retriever.encode(query))
     # Normalize embeddings to unit length.
-    query_embeddings = torch.nn.functional.normalize(query_embeddings, p=2, dim=1)
+    query_embeddings = F.normalize(query_embeddings, p=2, dim=1)
     # Quick check if embeddings are normalized.
     norms = np.linalg.norm(query_embeddings, axis=1)
     assert np.allclose(norms, 1.0, atol=1e-5) == True
